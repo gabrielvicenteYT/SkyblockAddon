@@ -35,10 +35,6 @@ public class EnumUtils {
             this.id = id;
         }
 
-        public String getMessage() {
-            return message.getMessage();
-        }
-
         public static AnchorPoint fromId(int id) {
             for (AnchorPoint feature : values()) {
                 if (feature.getId() == id) {
@@ -46,6 +42,10 @@ public class EnumUtils {
                 }
             }
             return null;
+        }
+
+        public String getMessage() {
+            return message.getMessage();
         }
 
         public int getX(int maxX) {
@@ -96,6 +96,13 @@ public class EnumUtils {
          * The current inventory type. Can be null.
          */
         @Getter private static InventoryType currentInventoryType;
+        private final Message message;
+        private final String inventoryName;
+
+        InventoryType(Message message, String inventoryName) {
+            this.message = message;
+            this.inventoryName = inventoryName;
+        }
 
         /**
          * Resets the current inventory type
@@ -119,14 +126,6 @@ public class EnumUtils {
                 }
             }
             return null;
-        }
-
-        private final Message message;
-        private final String inventoryName;
-
-        InventoryType(Message message, String inventoryName) {
-            this.message = message;
-            this.inventoryName = inventoryName;
         }
 
         public String getMessage() {
@@ -303,7 +302,11 @@ public class EnumUtils {
                 Feature.CRAFTING_PATTERNS, Feature.POWER_ORB_STATUS_DISPLAY),
         GARY("GARY_", "github.com/occanowey", Feature.ONLY_MINE_VALUABLES_NETHER),
         P0KE("P0ke", "p0ke.dev", Feature.ZEALOT_COUNTER),
-        BERISAN("Berisan", "github.com/Berisan", Feature.TAB_EFFECT_TIMERS);
+        BERISAN("Berisan", "github.com/Berisan", Feature.TAB_EFFECT_TIMERS),
+        HENRY("Henry_Fabio", "github.com/HenryFabio",
+                Feature.MINION_DISABLE_FENCE_LOCATION_WARNING,
+                Feature.HIDE_PLAYERS
+        );
 
         private Set<Feature> features;
         private String author;

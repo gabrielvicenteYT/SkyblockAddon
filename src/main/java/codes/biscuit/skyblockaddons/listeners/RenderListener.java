@@ -113,7 +113,7 @@ public class RenderListener {
         if (values.isEnabled(Feature.MINION_DISABLE_LOCATION_WARNING)) {
             if (entityName.startsWith("§cEste não é o formato ideal.")) e.setCanceled(true);
         }
-        if (values.isEnabled(Feature.MINION_FENCE_LOCATION_WARNING)) {
+        if (values.isEnabled(Feature.MINION_DISABLE_FENCE_LOCATION_WARNING)) {
             if (entityName.startsWith("§cCerque o local.")) e.setCanceled(true);
         }
     }
