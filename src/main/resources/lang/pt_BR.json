@@ -97,7 +97,8 @@
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
     "enableDevFeatures": "Enable Developer Features",
-    "fenceLocationMinionWarning": "Aviso de Cerque o Local"
+    "fenceLocationMinionWarning": "Desativar aviso de cerque o local",
+    "hideAllPlayers": "Esconder jogadores"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",

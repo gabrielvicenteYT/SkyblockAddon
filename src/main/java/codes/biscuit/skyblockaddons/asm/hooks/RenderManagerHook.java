@@ -10,9 +10,13 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.INpc;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityItemFrame;
+import net.minecraft.entity.passive.EntityVillager;
+
+import java.util.Arrays;
 
 public class RenderManagerHook {
 
@@ -40,6 +44,12 @@ public class RenderManagerHook {
                             entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7) {
                         returnValue.cancel();
                     }
+                }
+            }
+            if (main.getConfigValues().isEnabled(Feature.HIDE_ALL_PLAYERS)) {
+                if ((entityIn instanceof EntityOtherPlayerMP || entityIn instanceof EntityFX || entityIn instanceof EntityItemFrame) &&
+                        entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7 && !NPCUtils.isNPC(entityIn)) {
+                    returnValue.cancel();
                 }
             }
         }

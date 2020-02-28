@@ -96,6 +96,7 @@ public enum Message {
     SETTING_SHOW_BACKPACK_PREVIEW_AH(MessageObject.SETTING, "showBackpackPreviewInAH"),
     SETTING_ENABLE_DEV_FEATURES(MessageObject.SETTING, "enableDevFeatures"),
     SETTING_FENCE_LOCATION_MINION(MessageObject.SETTING, "fenceLocationMinionWarning"),
+    SETTING_HIDE_ALL_PLAYERS(MessageObject.SETTING, "hideAllPlayers"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

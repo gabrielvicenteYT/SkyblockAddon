@@ -43,32 +43,25 @@ public class RenderListener {
     private final static ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
     private final static ResourceLocation IMPERIAL_BARS_FIX = new ResourceLocation("skyblockaddons", "imperialbarsfix.png");
     private final static ResourceLocation TICKER_SYMBOL = new ResourceLocation("skyblockaddons", "ticker.png");
-
+    private static final SlayerArmorProgress[] DUMMY_PROGRESSES = new SlayerArmorProgress[]{new SlayerArmorProgress(new ItemStack(Items.diamond_boots)),
+            new SlayerArmorProgress(new ItemStack(Items.chainmail_leggings)), new SlayerArmorProgress(new ItemStack(Items.diamond_chestplate)), new SlayerArmorProgress(new ItemStack(Items.leather_helmet))};
+    private static List<ItemDiff> DUMMY_PICKUP_LOG = new ArrayList<>(Arrays.asList(new ItemDiff(ChatFormatting.DARK_PURPLE + "Qualquer item épico", 1),
+            new ItemDiff("Bote", -1), new ItemDiff(ChatFormatting.BLUE + "Aspecto do Fim", 1)));
     private SkyblockAddons main;
-
     @Getter @Setter private boolean predictHealth = false;
     @Getter @Setter private boolean predictMana = false;
-
     @Getter private DownloadInfo downloadInfo;
-
     private Feature subtitleFeature = null;
     @Getter @Setter private Feature titleFeature = null;
-
     @Setter private int arrowsLeft;
-
     @Setter private String cannotReachMobName = null;
-
     @Setter private long skillFadeOutTime = -1;
     @Setter private EnumUtils.SkillType skill = null;
     @Setter private String skillText = null;
-
     private EnumUtils.GUIType guiToOpen = null;
     private int guiPageToOpen = 1;
     private EnumUtils.GuiTab guiTabToOpen = EnumUtils.GuiTab.MAIN;
     private String textToOpen = null;
-
-    private final String notPerfectMinionLocation = "Este não é o formato ideal.";
-
 
     public RenderListener(SkyblockAddons main) {
         this.main = main;
@@ -114,19 +107,14 @@ public class RenderListener {
     @SubscribeEvent()
     public void onRenderLiving(RenderLivingEvent.Specials.Pre e) {
         Entity entity = e.entity;
-        if (main.getConfigValues().isEnabled(Feature.MINION_DISABLE_LOCATION_WARNING) && entity.hasCustomName()) {
-            System.out.println("ENTITY CUSTOM NAME: " + entity.getCustomNameTag());
-            if (entity.getCustomNameTag().startsWith(notPerfectMinionLocation)) e.setCanceled(true);
-            if (entity.getCustomNameTag().startsWith("§c/!\\")) {
-                for (Entity listEntity : Minecraft.getMinecraft().theWorld.loadedEntityList) {
-                    if (listEntity.hasCustomName() && listEntity.getCustomNameTag().startsWith(notPerfectMinionLocation) &&
-                            listEntity.posX == entity.posX && listEntity.posZ == entity.posZ &&
-                            listEntity.posY + 0.375 == entity.posY) {
-                        e.setCanceled(true);
-                        break;
-                    }
-                }
-            }
+        if (!entity.hasCustomName()) return;
+        String entityName = entity.getCustomNameTag();
+        ConfigValues values = main.getConfigValues();
+        if (values.isEnabled(Feature.MINION_DISABLE_LOCATION_WARNING)) {
+            if (entityName.startsWith("§cEste não é o formato ideal.")) e.setCanceled(true);
+        }
+        if (values.isEnabled(Feature.MINION_FENCE_LOCATION_WARNING)) {
+            if (entityName.startsWith("§cCerque o local.")) e.setCanceled(true);
         }
     }
 
@@ -499,7 +487,6 @@ public class RenderListener {
         }
     }
 
-
     /**
      * This renders the defence icon.
      */
@@ -705,9 +692,6 @@ public class RenderListener {
         }
     }
 
-    private static final SlayerArmorProgress[] DUMMY_PROGRESSES = new SlayerArmorProgress[]{new SlayerArmorProgress(new ItemStack(Items.diamond_boots)),
-            new SlayerArmorProgress(new ItemStack(Items.chainmail_leggings)), new SlayerArmorProgress(new ItemStack(Items.diamond_chestplate)), new SlayerArmorProgress(new ItemStack(Items.leather_helmet))};
-
     public void drawRevenantIndicator(float scale, Minecraft mc, ButtonLocation buttonLocation) {
         float x = main.getConfigValues().getActualX(Feature.SLAYER_INDICATOR);
         float y = main.getConfigValues().getActualY(Feature.SLAYER_INDICATOR);
@@ -822,9 +806,6 @@ public class RenderListener {
         mc.getRenderItem().renderItemIntoGUI(item, x, y);
         RenderHelper.disableStandardItemLighting();
     }
-
-    private static List<ItemDiff> DUMMY_PICKUP_LOG = new ArrayList<>(Arrays.asList(new ItemDiff(ChatFormatting.DARK_PURPLE + "Qualquer item épico", 1),
-            new ItemDiff("Bote", -1), new ItemDiff(ChatFormatting.BLUE + "Aspecto do Fim", 1)));
 
     public void drawItemPickupLog(float scale, ButtonLocation buttonLocation) {
         float x = main.getConfigValues().getActualX(Feature.ITEM_PICKUP_LOG);

@@ -55,10 +55,9 @@ public class PlayerListener {
     private final Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
     private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+(?:§[0-9a-f])?([0-9.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
     private final Set<String> randomMessages = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?", "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your Magical Mushroom Soup flight has been extended for 2 extra minutes."));
-
-
+    private final SkyblockAddons main;
+    private final ActionBarParser actionBarParser;
     private boolean sentUpdate = false;
-
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
     private int magmaTick = 1;
@@ -73,19 +72,14 @@ public class PlayerListener {
     private long lastFishingAlert = 0;
     private long lastBobberEnteredWater = Long.MAX_VALUE;
     private long lastSkyblockServerJoinAttempt = 0;
-
     private boolean oldBobberIsInWater = false;
     private double oldBobberPosY = 0;
-
     private Set<Entity> countedEndermen = new HashSet<>();
     @Getter private Set<CoordsPair> recentlyLoadedChunks = new HashSet<>();
     @Getter @Setter private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
     @Getter @Setter private int magmaTime = 0;
     @Getter @Setter private int recentMagmaCubes = 0;
     @Getter @Setter private int recentBlazes = 0;
-
-    private final SkyblockAddons main;
-    private final ActionBarParser actionBarParser;
 
     public PlayerListener(SkyblockAddons main) {
         this.main = main;
@@ -346,10 +340,11 @@ public class PlayerListener {
                 }
             }
 
+            int cooldown = main.getConfigValues().getWarningSeconds() * 1000 + 5000;
+
             if (main.getUtils().getLocation() == Location.ISLAND) {
-                int cooldown = main.getConfigValues().getWarningSeconds() * 1000 + 5000;
                 if (main.getConfigValues().isEnabled(Feature.MINION_FULL_WARNING) &&
-                        entity.getCustomNameTag().equals("§cMeu armazenamento está cheio.")) {
+                        entity.getCustomNameTag().equals("§cMeu inventário está cheio!")) {
                     long now = System.currentTimeMillis();
                     if (now - lastMinionSound > cooldown) { //this just spams message...
                         lastMinionSound = now;
@@ -358,7 +353,7 @@ public class PlayerListener {
                         main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                     }
                 } else if (main.getConfigValues().isEnabled(Feature.MINION_STOP_WARNING) &&
-                        entity.getCustomNameTag().startsWith("§cEu não consigo alcançar ")) {
+                        entity.getCustomNameTag().equals("§cNenhuma entidade próxima!")) {
                     long now = System.currentTimeMillis();
                     if (now - lastMinionSound > cooldown) {
                         lastMinionSound = now;
@@ -367,7 +362,7 @@ public class PlayerListener {
                         if (mobName.lastIndexOf("s") == mobName.length() - 1) {
                             mobName = mobName.substring(0, mobName.length() - 1);
                         }
-                        main.getRenderListener().setCannotReachMobName(mobName);
+                        main.getRenderListener().setCannotReachMobName("Mob Minion");
                         main.getRenderListener().setSubtitleFeature(Feature.MINION_STOP_WARNING);
                         main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                     }

@@ -7,7 +7,7 @@ import lombok.Getter;
  */
 @Getter
 public enum Location {
-    ISLAND("Sua Ilha"),
+    ISLAND("Sua ilha"),
 
     // Hub
     AUCTION_HOUSE("Casa de Leilões"),
