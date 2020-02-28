@@ -214,48 +214,12 @@ public class Utils {
                 } else {
                     scores = list;
                 }
-                String timeString = null;
                 for (Score score1 : scores) {
                     ScorePlayerTeam scorePlayerTeam = scoreboard.getPlayersTeam(score1.getPlayerName());
                     String locationString = keepLettersAndNumbersOnly(
                             stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName())));
-                    if (locationString.endsWith("am") || locationString.endsWith("pm")) {
-                        timeString = locationString.trim();
-                        timeString = timeString.substring(0, timeString.length() - 2);
-                    }
-                    for (SkyblockDate.SkyblockMonth month : SkyblockDate.SkyblockMonth.values()) {
-                        if (locationString.contains(month.getScoreboardString())) {
-                            try {
-                                currentDate.setMonth(month);
-                                String numberPart = locationString.substring(locationString.lastIndexOf(" ") + 1);
-                                int day = Integer.parseInt(getNumbersOnly(numberPart));
-                                currentDate.setDay(day);
-                                if (timeString != null) {
-                                    String[] timeSplit = timeString.split(Pattern.quote(":"));
-                                    int hour = Integer.parseInt(timeSplit[0]);
-                                    currentDate.setHour(hour);
-                                    int minute = Integer.parseInt(timeSplit[1]);
-                                    currentDate.setMinute(minute);
-                                }
-                            } catch (IndexOutOfBoundsException | NumberFormatException ignored) {
-                            }
-                            break;
-                        }
-                    }
-                    if (locationString.contains("mini")) {
-                        Matcher matcher = SERVER_REGEX.matcher(locationString);
-                        if (matcher.matches()) {
-                            serverID = matcher.group(2);
-                            continue; // skip to next line
-                        }
-                    }
                     for (Location loopLocation : Location.values()) {
                         if (locationString.endsWith(loopLocation.getScoreboardName())) {
-                            if (loopLocation == Location.BLAZING_FORTRESS &&
-                                    location != Location.BLAZING_FORTRESS) {
-                                sendPostRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
-                                fetchEstimateFromServer();
-                            }
                             location = loopLocation;
                             foundLocation = true;
                             break;

@@ -67,6 +67,8 @@ public class RenderListener {
     private EnumUtils.GuiTab guiTabToOpen = EnumUtils.GuiTab.MAIN;
     private String textToOpen = null;
 
+    private final String notPerfectMinionLocation = "Este não é o formato ideal.";
+
 
     public RenderListener(SkyblockAddons main) {
         this.main = main;
@@ -113,12 +115,11 @@ public class RenderListener {
     public void onRenderLiving(RenderLivingEvent.Specials.Pre e) {
         Entity entity = e.entity;
         if (main.getConfigValues().isEnabled(Feature.MINION_DISABLE_LOCATION_WARNING) && entity.hasCustomName()) {
-            if (entity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(")) {
-                e.setCanceled(true);
-            }
+            System.out.println("ENTITY CUSTOM NAME: " + entity.getCustomNameTag());
+            if (entity.getCustomNameTag().startsWith(notPerfectMinionLocation)) e.setCanceled(true);
             if (entity.getCustomNameTag().startsWith("§c/!\\")) {
                 for (Entity listEntity : Minecraft.getMinecraft().theWorld.loadedEntityList) {
-                    if (listEntity.hasCustomName() && listEntity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(") &&
+                    if (listEntity.hasCustomName() && listEntity.getCustomNameTag().startsWith(notPerfectMinionLocation) &&
                             listEntity.posX == entity.posX && listEntity.posZ == entity.posZ &&
                             listEntity.posY + 0.375 == entity.posY) {
                         e.setCanceled(true);

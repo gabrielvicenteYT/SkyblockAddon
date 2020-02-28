@@ -40,7 +40,6 @@ public class Backpack {
 
     public static Backpack getFromItem(ItemStack stack) {
         if (stack == null) return null;
-        System.out.println("TAG COMPOUND: " + stack.getTagCompound());
         SkyblockAddons main = SkyblockAddons.getInstance();
         String id = ItemUtils.getSkyBlockItemID(stack);
         if (id != null) {

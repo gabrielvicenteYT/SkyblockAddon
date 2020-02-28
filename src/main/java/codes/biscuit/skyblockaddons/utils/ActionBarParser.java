@@ -37,7 +37,7 @@ import java.util.regex.Pattern;
 @Getter
 public class ActionBarParser {
 
-    private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+(?:§[0-9a-f])?([0-9,.]+) §?[0-9a-f]?([A-Za-z]+) ([0-9.,]+/[0-9.,])");
+    private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+(?:§[0-9a-f])?([0-9,.]+) §?[0-9a-f]?([A-Za-z \\u00C0-\\u00FF]+) §?[0-9a-f]?([0-9.,]+/[0-9.,]+)");
 
     private final SkyblockAddons main;
 
