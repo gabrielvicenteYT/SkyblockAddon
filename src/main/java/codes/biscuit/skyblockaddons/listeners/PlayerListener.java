@@ -358,10 +358,6 @@ public class PlayerListener {
                     if (now - lastMinionSound > cooldown) {
                         lastMinionSound = now;
                         main.getUtils().playLoudSound("random.orb", 1);
-                        String mobName = entity.getCustomNameTag().split(Pattern.quote("§cEu não consigo alcançar "))[1].toLowerCase();
-                        if (mobName.lastIndexOf("s") == mobName.length() - 1) {
-                            mobName = mobName.substring(0, mobName.length() - 1);
-                        }
                         main.getRenderListener().setCannotReachMobName("Mob Minion");
                         main.getRenderListener().setSubtitleFeature(Feature.MINION_STOP_WARNING);
                         main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());

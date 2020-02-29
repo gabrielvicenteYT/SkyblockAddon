@@ -19,6 +19,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Keyboard;
 
+import java.awt.*;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -70,11 +71,11 @@ public class GuiChestHook {
             GlStateManager.popMatrix();
             textFieldMatch.drawTextBox();
             if (StringUtil.isEmpty(textFieldMatch.getText())) {
-                MinecraftReflection.FontRenderer.drawString("ex. \"prot, feather\"", x + 4, guiTop + 86, ChatFormatting.DARK_GRAY);
+                MinecraftReflection.FontRenderer.drawString("ex. \"prot, inque\"", x + 4, guiTop + 86, ChatFormatting.DARK_GRAY);
             }
             textFieldExclusions.drawTextBox();
             if (StringUtil.isEmpty(textFieldExclusions.getText())) {
-                MinecraftReflection.FontRenderer.drawString("ex. \"proj, blast\"", x + 4, guiTop + 126, ChatFormatting.DARK_GRAY);
+                MinecraftReflection.FontRenderer.drawString("ex. \"prot, inque\"", x + 4, guiTop + 126, ChatFormatting.DARK_GRAY);
             }
         }
     }
@@ -169,9 +170,11 @@ public class GuiChestHook {
             if (slotIn != null && !slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory) && slotIn.getHasStack()) {
                 if (slotIn.getSlotIndex() == 13 && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.ENCHANTMENT_TABLE) {
                     ItemStack[] enchantBottles = {slots.getSlot(29).getStack(), slots.getSlot(31).getStack(), slots.getSlot(33).getStack()};
-                    for (ItemStack bottle : enchantBottles) {
+                    int[] enchantNameX = {10, 20, 30};
+                    for (int i = 0; i < enchantBottles.length; i++) {
+                        ItemStack bottle = enchantBottles[i];
                         if (bottle != null && bottle.hasDisplayName()) {
-                            if (bottle.getDisplayName().startsWith(ChatFormatting.GREEN + "Enchant Item")) {
+                            if (bottle.getDisplayName().startsWith(ChatFormatting.GREEN + "Encantar Item")) {
                                 Minecraft mc = Minecraft.getMinecraft();
                                 List<String> toolip = bottle.getTooltip(mc.thePlayer, false);
                                 if (toolip.size() > 2) {
@@ -185,7 +188,7 @@ public class GuiChestHook {
                                         }
                                     }
                                 }
-                            } else if (bottle.getDisplayName().startsWith(ChatFormatting.RED + "Enchant Item")) {
+                            } else if (bottle.getDisplayName().startsWith(ChatFormatting.RED + "Encantar Item")) {
                                 // Stop player from removing item before the enchants have even loaded.
                                 returnValue.cancel();
                             }

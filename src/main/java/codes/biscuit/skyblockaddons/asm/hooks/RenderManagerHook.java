@@ -43,7 +43,7 @@ public class RenderManagerHook {
                 }
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS)) {
-                if ((entityIn instanceof EntityOtherPlayerMP || entityIn instanceof EntityFX || entityIn instanceof EntityItemFrame) &&
+                if ((entityIn instanceof EntityOtherPlayerMP) &&
                         entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7 && !NPCUtils.isNPC(entityIn)) {
                     returnValue.cancel();
                 }

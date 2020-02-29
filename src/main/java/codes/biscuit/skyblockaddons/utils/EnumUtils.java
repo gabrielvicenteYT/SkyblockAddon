@@ -88,7 +88,7 @@ public class EnumUtils {
     }
 
     public enum InventoryType {
-        ENCHANTMENT_TABLE(INVENTORY_TYPE_ENCHANTS, "Mesa de encantamento"),
+        ENCHANTMENT_TABLE(INVENTORY_TYPE_ENCHANTS, "Mesa de Encantamento"),
         REFORGE_ANVIL(INVENTORY_TYPE_REFORGES, "Menu de Reforja"),
         CRAFTING_TABLE(INVENTORY_TYPE_CRAFTING, CraftingPattern.CRAFTING_TABLE_DISPLAYNAME);
 
