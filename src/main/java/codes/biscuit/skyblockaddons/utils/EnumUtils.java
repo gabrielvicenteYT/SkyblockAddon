@@ -362,12 +362,12 @@ public class EnumUtils {
     }
 
     public enum SkillType {
-        FARMING("Fazenda", Items.golden_hoe),
+        FARMING("Herbalismo", Items.golden_hoe),
         MINING("Mineração", Items.diamond_pickaxe),
         COMBAT("Combate", Items.iron_sword),
-        FORAGING("Lenhador", Item.getItemFromBlock(Blocks.sapling)),
+        FORAGING("Lenha", Item.getItemFromBlock(Blocks.sapling)),
         FISHING("Pesca", Items.fishing_rod),
-        ENCHANTING("Encantar", Item.getItemFromBlock(Blocks.enchanting_table)),
+        ENCHANTING("Encantamento", Item.getItemFromBlock(Blocks.enchanting_table)),
         ALCHEMY("Alquimia", Items.brewing_stand),
         CARPENTRY("Carpintaria", Item.getItemFromBlock(Blocks.crafting_table)),
         RUNECRAFTING("Runecrafting", Items.magma_cream),

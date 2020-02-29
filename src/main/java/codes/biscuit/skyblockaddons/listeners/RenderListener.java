@@ -685,7 +685,12 @@ public class RenderListener {
             RenderHelper.enableGUIStandardItemLighting();
             if (!(mc.currentScreen instanceof GuiChat)) {
                 if (buttonLocation != null || textAlpha > 0.1) {
-                    mc.getRenderItem().renderItemIntoGUI(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(), intX - 18, intY - 5);
+                    try {
+                        System.out.println("INFO: " + mc.getRenderItem() + " - " + buttonLocation == null + " (" + (buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem()) + ")");
+                        mc.getRenderItem().renderItemIntoGUI(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(), intX - 18, intY - 5);
+                    } catch (Throwable ignore) {
+
+                    }
                 }
             }
             RenderHelper.disableStandardItemLighting();
