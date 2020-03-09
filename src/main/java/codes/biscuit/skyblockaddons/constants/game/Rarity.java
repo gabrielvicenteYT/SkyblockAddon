@@ -7,12 +7,12 @@ import lombok.Getter;
  */
 @Getter
 public enum Rarity {
-    COMMON("§f§lCOMUM"),
-    UNCOMMON("§a§lINCOMUM"),
-    RARE("§9§lRARO"),
-    EPIC("§5§lÉPICO"),
-    LEGENDARY("§6§lLENDÁRIO"),
-    SPECIAL("§d§lESPECIAL");
+    COMMON("COMUM"),
+    UNCOMMON("INCOMUM"),
+    RARE("RARA"),
+    EPIC("ÉPICO"),
+    LEGENDARY("LENDÁRIO"),
+    SPECIAL("ESPECIAL");
 
     private String tag;
 

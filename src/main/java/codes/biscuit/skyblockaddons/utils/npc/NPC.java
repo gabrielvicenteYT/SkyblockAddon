@@ -25,7 +25,7 @@ enum NPC {
      */
     // Village (in Hub)
     ADVENTURER("Adventurer", -18.5, 70, -77, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), singletonList(Location.VILLAGE)),
-    ALCHEMIST("Alchemist", -33.5, 73, -14.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), singletonList(Location.VILLAGE)),
+    ALCHEMIST("Bruxa", -33.5, 73, -14.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), singletonList(Location.VILLAGE)),
     ANDREW("Andrew", 9.5, 70, -64.5, asList(Tag.VILLAGER, Tag.INFO, Tag.QUEST_NPC), singletonList(Location.VILLAGE)),
     APPRENTICE("Apprentice", -53, 58, 80, asList(Tag.VILLAGER, Tag.INFO), singletonList(Location.VILLAGE)),
     ARMORSMITH("Armorsmith", -25.5, 70, -90, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), singletonList(Location.VILLAGE)),

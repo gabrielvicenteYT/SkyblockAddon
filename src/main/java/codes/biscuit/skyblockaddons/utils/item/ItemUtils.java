@@ -37,7 +37,7 @@ public class ItemUtils {
             String currentLine = lore.getStringTagAt(i);
 
             for (Rarity rarity : EnumSet.allOf(Rarity.class)) {
-                if (currentLine.startsWith(rarity.getTag())) {
+                if (currentLine.contains(rarity.getTag())) {
                     return rarity;
                 }
             }

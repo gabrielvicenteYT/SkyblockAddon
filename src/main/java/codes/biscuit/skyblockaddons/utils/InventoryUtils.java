@@ -232,10 +232,7 @@ public class InventoryUtils {
                 }
 
                 // Use a different message if just one more click is needed
-                if (dropCount == 2) {
-                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
-                            Message.MESSAGE_CLICK_ONE_MORE_TIME.getMessage(String.valueOf(3 - dropCount)));
-                } else {
+                if (dropCount >= 1) {
                     SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
                             Message.MESSAGE_CLICK_MORE_TIMES.getMessage(String.valueOf(3 - dropCount)));
                 }

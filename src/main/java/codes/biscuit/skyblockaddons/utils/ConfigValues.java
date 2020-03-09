@@ -72,7 +72,14 @@ public class ConfigValues {
             Feature.DONT_RESET_CURSOR_INVENTORY,
             Feature.ORGANIZE_ENCHANTMENTS,
             Feature.MAKE_ENDERCHESTS_GREEN_IN_END,
-            Feature.HIDE_PLAYERS_NEAR_NPCS
+            Feature.HIDE_PLAYERS_NEAR_NPCS,
+            Feature.SHOW_BACKPACK_PREVIEW,
+            Feature.SHOW_BACKPACK_HOLDING_SHIFT,
+            Feature.MAKE_BACKPACK_INVENTORIES_COLORED,
+            Feature.JUNGLE_AXE_COOLDOWN,
+            Feature.SHOW_ITEM_COOLDOWNS,
+            Feature.BACKPACK_PREVIEW_AH,
+            Feature.NO_ARROWS_LEFT_ALERT
     );
     private Set<Integer> legacyLockedSlots = new HashSet<>();
     private Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
