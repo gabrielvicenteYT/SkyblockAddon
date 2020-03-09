@@ -305,7 +305,8 @@ public class EnumUtils {
         BERISAN("Berisan", "github.com/Berisan", Feature.TAB_EFFECT_TIMERS),
         HENRY("Henry_Fabio", "github.com/HenryFabio",
                 Feature.MINION_DISABLE_FENCE_LOCATION_WARNING,
-                Feature.HIDE_PLAYERS
+                Feature.HIDE_PLAYERS,
+                Feature.ENABLE_COLOR_CONVOLVE
         );
 
         private Set<Feature> features;

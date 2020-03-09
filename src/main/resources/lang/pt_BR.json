@@ -98,14 +98,15 @@
     "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
     "enableDevFeatures": "Enable Developer Features",
     "fenceLocationMinionWarning": "Desativar aviso de cerque o local",
-    "hideAllPlayers": "Esconder jogadores"
+    "hideAllPlayers": "Esconder jogadores",
+    "enableColorConvolve": "Ativar Cores Vivas (Color Convolve)"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
     "magmaBossWarning": "Cubo de Magma Chefão!",
     "fullInventory": "Inventário Cheio!",
     "labymod": "Usuários de Labymod: Esconder Barras de Fome, Armadura e Vida não é compatível.",
-    "minionCannotReach": "Um criado de %type% não alcança e parou de trabalhar!",
+    "minionCannotReach": "Um criado não alcança entidades e parou de trabalhar!",
     "minionIsFull": "Um criado em sua ilha está cheio!",
     "typeEnchantmentsHere": "Escreva %type% Aqui!",
     "separateMultiple": "Separe Múltiplos Com Vírgulas.",

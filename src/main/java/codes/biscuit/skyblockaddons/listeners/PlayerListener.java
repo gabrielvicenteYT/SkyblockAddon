@@ -10,6 +10,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
@@ -231,7 +232,7 @@ public class PlayerListener {
             // Update fishing status
             if (heldItem.getItem().equals(Items.fishing_rod)) {
                 if (e.action == PlayerInteractEvent.Action.LEFT_CLICK_BLOCK) {
-                    if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && mc.thePlayer.fishEntity != null) {
+                    if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)) {
                         CooldownManager.put(mc.thePlayer.getHeldItem());
                     }
                 } else {
@@ -306,9 +307,11 @@ public class PlayerListener {
 
                     main.getInventoryUtils().cleanUpPickupLog();
 
-                } else if (timerTick > 20) { // To keep the timer going from 1 to 21 only.
+                } else if (timerTick > 20) {
+                    // To keep the timer going from 1 to 21 only.
                     timerTick = 1;
                 }
+
             }
         }
     }
@@ -317,8 +320,31 @@ public class PlayerListener {
      * Checks for minion holograms.
      * Original contribution by Michael#3549.
      */
+
+    private boolean usingColorConvolve = false;
+
     @SubscribeEvent
     public void onEntityEvent(LivingEvent.LivingUpdateEvent e) {
+        SkyblockAddons instance = SkyblockAddons.getInstance();
+        if (instance.getConfigValues().isEnabled(Feature.ENABLE_COLOR_CONVOLVE)) {
+            EntityRenderer entityRenderer = Minecraft.getMinecraft().entityRenderer;
+            boolean changing = false;
+            while (!entityRenderer.isShaderActive() || !entityRenderer.getShaderGroup().getShaderGroupName().equals("minecraft:shaders/post/color_convolve.json")) {
+                if (!changing) {
+                    if (instance.isDevMode()) instance.getUtils().sendMessage(ChatFormatting.YELLOW + "Changing to 'color_convolve.json' shader.");
+                    changing = true;
+                }
+                entityRenderer.activateNextShader();
+            }
+            usingColorConvolve = true;
+        } else {
+            if (usingColorConvolve) {
+                EntityRenderer entityRenderer = Minecraft.getMinecraft().entityRenderer;
+                entityRenderer.stopUseShader();
+                usingColorConvolve = false;
+            }
+        }
+
         Entity entity = e.entity;
 
         if (main.getUtils().isOnSkyblock() && entity instanceof EntityArmorStand && entity.hasCustomName()) {

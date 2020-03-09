@@ -72,7 +72,8 @@ public class ConfigValues {
             Feature.CAKE_BAG_PREVIEW,
             Feature.DONT_RESET_CURSOR_INVENTORY,
             Feature.ORGANIZE_ENCHANTMENTS,
-            Feature.MAKE_ENDERCHESTS_GREEN_IN_END
+            Feature.MAKE_ENDERCHESTS_GREEN_IN_END,
+            Feature.HIDE_PLAYERS_NEAR_NPCS
     );
     private Set<Integer> legacyLockedSlots = new HashSet<>();
     private Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();

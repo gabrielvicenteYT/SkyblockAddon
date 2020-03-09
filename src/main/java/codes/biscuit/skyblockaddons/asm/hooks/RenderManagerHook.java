@@ -8,11 +8,8 @@ import codes.biscuit.skyblockaddons.utils.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.utils.npc.Tag;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
-import net.minecraft.client.particle.EntityFX;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.item.EntityItemFrame;
 
 public class RenderManagerHook {
 
@@ -22,30 +19,32 @@ public class RenderManagerHook {
         if (main.getUtils().isOnSkyblock()) {
             Location currentLocation = main.getUtils().getLocation();
 
-            if (entityIn instanceof EntityItem &&
-                    entityIn.ridingEntity instanceof EntityArmorStand && entityIn.ridingEntity.isInvisible()) { // Conditions for skeleton helmet flying bones
-                if (main.getConfigValues().isEnabled(Feature.HIDE_BONES)) {
-                    returnValue.cancel();
+            if (main.getConfigValues().isEnabled(Feature.HIDE_BONES)) {
+                if (entityIn instanceof EntityArmorStand) {
+                    EntityArmorStand stand = (EntityArmorStand) entityIn;
+                    if (stand.getHeldItem() != null && stand.getHeldItem().toString().contains("item.bone"))
+                        returnValue.cancel();
                 }
             }
+
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
                 if (entityIn instanceof EntityOtherPlayerMP && NPCUtils.isNearAnyNPCWithTag(entityIn, Tag.IMPORTANT) && !NPCUtils.isNPC(entityIn)) {
                     returnValue.cancel();
                 }
             }
-            if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_IN_LOBBY)) {
+
+            if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS)) {
+                if ((entityIn instanceof EntityOtherPlayerMP) &&
+                        entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7) {
+                    returnValue.cancel();
+                }
+            } else if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_IN_LOBBY)) {
                 if (currentLocation == Location.VILLAGE || currentLocation == Location.AUCTION_HOUSE ||
                         currentLocation == Location.BANK) {
-                    if ((entityIn instanceof EntityOtherPlayerMP || entityIn instanceof EntityFX || entityIn instanceof EntityItemFrame) &&
+                    if ((entityIn instanceof EntityOtherPlayerMP) &&
                             entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7) {
                         returnValue.cancel();
                     }
-                }
-            }
-            if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS)) {
-                if ((entityIn instanceof EntityOtherPlayerMP) &&
-                        entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7 && !NPCUtils.isNPC(entityIn)) {
-                    returnValue.cancel();
                 }
             }
         }

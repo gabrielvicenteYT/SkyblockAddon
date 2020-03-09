@@ -29,12 +29,12 @@ public class InventoryUtils {
     /**
      * Display name of the Skeleton Helmet.
      */
-    private static final String SKELETON_HELMET_ID = "SKELETON_HELMET";
+    private static final String SKELETON_HELMET_ID = "SKELETON_ARMOR_HELMET";
 
     public static final String MADDOX_BATPHONE_DISPLAYNAME = "\u00A7aMaddox Batphone";
-    public static final String JUNGLE_AXE_DISPLAYNAME = "\u00A7aMachado selvagem";
+    public static final String JUNGLE_AXE_DISPLAYNAME = "\u00A7aMachado Selvagem";
     public static final String FAIRY_SOUL_EXCHANGE_DISPLAYNAME = "\u00a7aExchange Fairy Souls";
-    public static final String CHICKEN_HEAD_DISPLAYNAME = "\u00a7fCabeça de Galinha";
+    public static final String CHICKEN_HEAD_DISPLAYNAME = "\u00a7fChapéu de Galinha";
 
     private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("§5§o§7Next Upgrade: §a\\+([0-9]+❈) §8\\(§a([0-9,]+)§7/§c([0-9,]+)§8\\)");
 

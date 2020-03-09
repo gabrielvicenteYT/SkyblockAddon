@@ -13,8 +13,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.shader.Shader;
+import net.minecraft.client.shader.ShaderDefault;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
@@ -74,6 +77,7 @@ public class RenderListener {
      */
     @SubscribeEvent()
     public void onRenderRegular(RenderGameOverlayEvent.Post e) {
+
         if ((!main.isUsingLabymod() || Minecraft.getMinecraft().ingameGUI instanceof GuiIngameForge)) {
             if (e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE || e.type == RenderGameOverlayEvent.ElementType.JUMPBAR) {
                 if (main.getUtils().isOnSkyblock()) {
@@ -422,9 +426,10 @@ public class RenderListener {
         int bones = 0;
         if (!(mc.currentScreen instanceof LocationEditGui)) {
             for (Entity listEntity : mc.theWorld.loadedEntityList) {
-                if (listEntity instanceof EntityItem &&
-                        listEntity.ridingEntity instanceof EntityArmorStand && listEntity.ridingEntity.isInvisible() && listEntity.getDistanceToEntity(mc.thePlayer) <= 8) {
-                    bones++;
+                if (listEntity instanceof EntityArmorStand) {
+                    EntityArmorStand stand = (EntityArmorStand) listEntity;
+                    if (stand.getHeldItem() != null && stand.getHeldItem().toString().contains("item.bone") && listEntity.getDistanceToEntity(mc.thePlayer) <= 8)
+                        bones++;
                 }
             }
         } else {
@@ -686,7 +691,6 @@ public class RenderListener {
             if (!(mc.currentScreen instanceof GuiChat)) {
                 if (buttonLocation != null || textAlpha > 0.1) {
                     try {
-                        System.out.println("INFO: " + mc.getRenderItem() + " - " + buttonLocation == null + " (" + (buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem()) + ")");
                         mc.getRenderItem().renderItemIntoGUI(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(), intX - 18, intY - 5);
                     } catch (Throwable ignore) {
 

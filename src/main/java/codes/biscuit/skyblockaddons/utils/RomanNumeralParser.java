@@ -13,11 +13,11 @@ public class RomanNumeralParser {
     /**
      * Pattern that validates a string as a correct Roman numeral
      */
-    private static final Pattern NUMERAL_VALIDATION_PATTERN = Pattern.compile("^(?=[MDCLXVI])M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$");
+    private static final Pattern NUMERAL_VALIDATION_PATTERN = Pattern.compile("^(?=[XVI])M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$");
     /**
      * Pattern that finds words that begin with a Roman numeral
      */
-    private static final Pattern NUMERAL_FINDING_PATTERN = Pattern.compile(" ((?=[MDCLXVI])M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3}))\\w*");
+    private static final Pattern NUMERAL_FINDING_PATTERN = Pattern.compile(" ((?=[XVI])M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3}))\\w*");
 
     private enum Numeral {
 

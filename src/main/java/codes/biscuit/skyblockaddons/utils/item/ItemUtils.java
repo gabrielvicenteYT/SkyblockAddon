@@ -56,8 +56,8 @@ public class ItemUtils {
     public static String getSkyBlockItemID(final ItemStack item) {
         if (item == null) return null;
         if (item.hasTagCompound()) {
-            NBTTagCompound skyBlockData = item.getTagCompound().getCompoundTag("ExtraAttributes");
-            return skyBlockData.getString("id");
+            NBTTagCompound skyBlockData = item.getTagCompound();
+            return skyBlockData.getString("CONSTANT_ITEM_ID");
         }
         return null;
     }

@@ -97,14 +97,15 @@
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "enableDevFeatures": "Enable Developer Features",
     "fenceLocationMinionWarning": "Disable fence location warn",
-    "hideAllPlayers": "Hide Players"
+    "hideAllPlayers": "Hide Players",
+    "enableColorConvolve": "Enable Color Convolve"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Full Inventory!",
     "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
-    "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!",
+    "minionCannotReach": "A minion cannot reach entities and has stopped spawning!",
     "minionIsFull": "A minion on your island is full!",
     "typeEnchantmentsHere": "Type %type% Here!",
     "separateMultiple": "Separate Multiple With Commas.",

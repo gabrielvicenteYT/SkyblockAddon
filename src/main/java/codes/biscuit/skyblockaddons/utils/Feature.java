@@ -28,7 +28,7 @@ public enum Feature {
     //    HIDE_DURABILITY(9, Message.SETTING_HIDE_DURABILITY), // Removed, added to Skyblock.
     @Deprecated SHOW_ENCHANTMENTS_REFORGES(10, Message.SETTING_ENCHANTS_AND_REFORGES, false),
     MINION_STOP_WARNING(11, Message.SETTING_MINION_STOP_WARNING, new GuiFeatureData(ChatFormatting.RED), true),
-    HIDE_PLAYERS_NEAR_NPCS(12, Message.SETTING_HIDE_PLAYERS_NEAR_NPCS, false),
+    @Deprecated HIDE_PLAYERS_NEAR_NPCS(12, Message.SETTING_HIDE_PLAYERS_NEAR_NPCS, false),
     HIDE_HEALTH_BAR(13, Message.SETTING_HIDE_HEALTH_BAR, true),
     @Deprecated DOUBLE_DROP_IN_OTHER_GAMES(14, null, false),
     MINION_FULL_WARNING(15, Message.SETTING_FULL_MINION, new GuiFeatureData(ChatFormatting.RED), true),
@@ -91,6 +91,7 @@ public enum Feature {
     BACKPACK_PREVIEW_AH(72, Message.SETTING_SHOW_BACKPACK_PREVIEW_AH, true),
     MINION_DISABLE_FENCE_LOCATION_WARNING(73, Message.SETTING_FENCE_LOCATION_MINION, new GuiFeatureData(ChatFormatting.RED), true),
     HIDE_PLAYERS(73, Message.SETTING_HIDE_ALL_PLAYERS, true),
+    ENABLE_COLOR_CONVOLVE(74, Message.SETTING_ENABLE_COLOR_CONVOLVE, true),
 
     HIDE_GREY_ENCHANTS(100, null, false), // This is here just to allow remote disabling this feature- it's caused issues in the past haha.
 
