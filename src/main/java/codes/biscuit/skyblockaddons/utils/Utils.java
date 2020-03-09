@@ -455,16 +455,9 @@ public class Utils {
     public String getReforgeFromItem(ItemStack item) {
         if (item.hasTagCompound()) {
             NBTTagCompound extraAttributes = item.getTagCompound();
-            if (extraAttributes.hasKey("ExtraAttributes")) {
-                extraAttributes = extraAttributes.getCompoundTag("ExtraAttributes");
-                if (extraAttributes.hasKey("modifier")) {
-                    String reforge = WordUtils.capitalizeFully(extraAttributes.getString("modifier"));
-
-                    reforge = reforge.replace("_sword", ""); //fixes reforges like "Odd_sword"
-                    reforge = reforge.replace("_bow", "");
-
-                    return reforge;
-                }
+            if (extraAttributes.hasKey("reforge")) {
+                String reforge = extraAttributes.getString("reforge").split("_")[0];
+                return WordUtils.capitalize(reforge);
             }
         }
         return null;

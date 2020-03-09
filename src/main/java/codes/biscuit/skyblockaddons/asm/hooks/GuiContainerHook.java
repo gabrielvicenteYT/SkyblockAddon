@@ -50,7 +50,7 @@ public class GuiContainerHook {
         if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
             Minecraft mc = Minecraft.getMinecraft();
             if (item != null && item.hasDisplayName()) {
-                if (item.getDisplayName().startsWith(ChatFormatting.GREEN + "Enchant Item")) {
+                if (item.getDisplayName().startsWith(ChatFormatting.GREEN + "Encantar Item")) {
                     List<String> toolip = item.getTooltip(mc.thePlayer, false);
                     if (toolip.size() > 2) {
                         String enchantLine = toolip.get(2);
@@ -60,9 +60,9 @@ public class GuiContainerHook {
                             String enchant;
                             if (!main.getUtils().getEnchantmentMatches().isEmpty() &&
                                     main.getUtils().enchantReforgeMatches(toMatch)) {
-                                enchant = ChatFormatting.RED + toMatch;
+                                enchant = ChatFormatting.GREEN + toMatch;
                             } else {
-                                enchant = ChatFormatting.YELLOW + toMatch;
+                                enchant = ChatFormatting.RED + toMatch;
                             }
                             float yOff;
                             if (slotIn.slotNumber == 29 || slotIn.slotNumber == 33) {
@@ -76,14 +76,14 @@ public class GuiContainerHook {
                             enchantsToRender.add(new EnchantPair(x * scaleMultiplier - halfStringWidth, y * scaleMultiplier + yOff, enchant));
                         }
                     }
-                } else if ("Reforge Item".equals(slotIn.inventory.getDisplayName().getUnformattedText()) && slotIn.slotNumber == 13) {
+                } else if ("Menu de Reforja".equals(slotIn.inventory.getDisplayName().getUnformattedText()) && slotIn.slotNumber == 13) {
                     String reforge = main.getUtils().getReforgeFromItem(item);
                     if (reforge != null) {
                         if (!main.getUtils().getEnchantmentMatches().isEmpty() &&
                                 main.getUtils().enchantReforgeMatches(reforge)) {
-                            reforge = ChatFormatting.RED + reforge;
+                            reforge = ChatFormatting.GREEN + reforge;
                         } else {
-                            reforge = ChatFormatting.YELLOW + reforge;
+                            reforge = ChatFormatting.RED + reforge;
                         }
                         x -= 28;
                         y += 22;

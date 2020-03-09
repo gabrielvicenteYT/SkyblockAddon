@@ -52,7 +52,6 @@ public class ConfigValues {
             Feature.MAGMA_WARNING,
             Feature.DISABLE_EMBER_ROD,
             Feature.MAGMA_BOSS_TIMER,
-            Feature.SHOW_ENCHANTMENTS_REFORGES,
             Feature.DARK_AUCTION_TIMER,
             Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES,
             Feature.SHOW_ITEM_ANVIL_USES,
