@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.asm.hooks.RenderManagerHook;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
@@ -13,21 +14,16 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.shader.Shader;
-import net.minecraft.client.shader.ShaderDefault;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
-import net.minecraftforge.event.entity.player.PlayerOpenContainerEvent;
 import net.minecraftforge.fml.client.GuiNotification;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -428,7 +424,7 @@ public class RenderListener {
             for (Entity listEntity : mc.theWorld.loadedEntityList) {
                 if (listEntity instanceof EntityArmorStand) {
                     EntityArmorStand stand = (EntityArmorStand) listEntity;
-                    if (stand.getHeldItem() != null && stand.getHeldItem().toString().contains("item.bone") && listEntity.getDistanceToEntity(mc.thePlayer) <= 8)
+                    if (stand.getHeldItem() != null && stand.getHeldItem().toString().contains("item.bone") && listEntity.getDistanceToEntity(mc.thePlayer) <= 6)
                         bones++;
                 }
             }
@@ -436,6 +432,7 @@ public class RenderListener {
             bones = 3;
         }
         if (bones > 3) bones = 3;
+        RenderManagerHook.getNearbyBones().clear();
 
         float height = 16;
         float width = 3 * 15;

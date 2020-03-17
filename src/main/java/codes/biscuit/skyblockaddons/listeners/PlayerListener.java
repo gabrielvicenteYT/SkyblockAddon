@@ -82,6 +82,8 @@ public class PlayerListener {
     @Getter @Setter private int recentMagmaCubes = 0;
     @Getter @Setter private int recentBlazes = 0;
 
+    @Getter @Setter private int bonesInSkeletonHelmet;
+
     public PlayerListener(SkyblockAddons main) {
         this.main = main;
         actionBarParser = new ActionBarParser(main);
@@ -708,6 +710,10 @@ public class PlayerListener {
 
     Integer getHealthUpdate() {
         return actionBarParser.getHealthUpdate();
+    }
+
+    void incrementSkeletonHelmetBone() {
+        bonesInSkeletonHelmet++;
     }
 
 }
