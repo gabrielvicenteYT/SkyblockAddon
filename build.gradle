@@ -44,7 +44,7 @@ repositories {
 }
 
 jar {
-    archiveName = archivesBaseName + "-1.4.2-dev-for-MC-1.8.9.jar"
+    archiveName = archivesBaseName + "-1.4.2-dev-RedeSky.jar"
 
     manifest.attributes(
             'Main-Class': 'OpenErrorMessage',
