@@ -99,7 +99,8 @@
     "enableDevFeatures": "Enable Developer Features",
     "fenceLocationMinionWarning": "Desativar aviso de cerque o local",
     "hideAllPlayers": "Esconder jogadores",
-    "enableColorConvolve": "Ativar Cores Vivas (Color Convolve)"
+    "enableColorConvolve": "Ativar Cores Vivas (Color Convolve)",
+    "disableUselessMessages": "Desativar mensagens inúteis"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",

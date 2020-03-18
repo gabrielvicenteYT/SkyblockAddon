@@ -98,7 +98,8 @@
     "enableDevFeatures": "Enable Developer Features",
     "fenceLocationMinionWarning": "Disable fence location warn",
     "hideAllPlayers": "Hide Players",
-    "enableColorConvolve": "Enable Color Convolve"
+    "enableColorConvolve": "Enable Color Convolve",
+    "disableUselessMessages": "Disable Useless Messages"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

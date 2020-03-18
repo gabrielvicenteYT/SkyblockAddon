@@ -92,6 +92,7 @@ public enum Feature {
     MINION_DISABLE_FENCE_LOCATION_WARNING(73, Message.SETTING_FENCE_LOCATION_MINION, new GuiFeatureData(ChatFormatting.RED), true),
     HIDE_PLAYERS(73, Message.SETTING_HIDE_ALL_PLAYERS, true),
     ENABLE_COLOR_CONVOLVE(74, Message.SETTING_ENABLE_COLOR_CONVOLVE, true),
+    DISABLE_USELESS_MESSAGES(75, Message.SETTING_DISABLE_USELESS_MESSAGES, true),
 
     HIDE_GREY_ENCHANTS(100, null, false), // This is here just to allow remote disabling this feature- it's caused issues in the past haha.
 

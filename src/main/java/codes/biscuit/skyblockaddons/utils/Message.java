@@ -98,6 +98,7 @@ public enum Message {
     SETTING_FENCE_LOCATION_MINION(MessageObject.SETTING, "fenceLocationMinionWarning"),
     SETTING_HIDE_ALL_PLAYERS(MessageObject.SETTING, "hideAllPlayers"),
     SETTING_ENABLE_COLOR_CONVOLVE(MessageObject.SETTING, "enableColorConvolve"),
+    SETTING_DISABLE_USELESS_MESSAGES(MessageObject.SETTING, "disableUselessMessages"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
