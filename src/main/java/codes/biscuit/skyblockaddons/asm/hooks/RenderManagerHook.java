@@ -17,7 +17,7 @@ import java.util.LinkedHashSet;
 
 public class RenderManagerHook {
 
-    @Getter private static LinkedHashSet<EntityArmorStand> nearbyBones = new LinkedHashSet<>();
+    @Getter private static LinkedHashSet<EntityArmorStand> nearbyBones = new LinkedHashSet<>(3);
 
     public static void shouldRender(Entity entityIn, ReturnValue<Boolean> returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
@@ -30,11 +30,11 @@ public class RenderManagerHook {
                     EntityArmorStand stand = (EntityArmorStand) entityIn;
                     if (stand.getHeldItem() != null && stand.getHeldItem().toString().contains("item.bone")) {
                         returnValue.cancel();
-                        BlockPos position = Minecraft.getMinecraft().thePlayer.getPosition();
-                        stand.setPositionAndUpdate(position.getX(), position.getY() - 2, position.getZ());
-                        stand.serverPosX = position.getX();
-                        stand.serverPosY = position.getY() - 2;
-                        stand.serverPosZ = position.getZ();
+
+                        if (stand.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 8) return;
+                        BlockPos position = stand.getPosition();
+                        stand.posY = position.getY() - 3;
+                        stand.serverPosY = position.getY() - 3;
                     }
                 }
             }

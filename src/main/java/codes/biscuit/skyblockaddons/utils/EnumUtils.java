@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -421,6 +422,50 @@ public class EnumUtils {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public enum ReforgeType {
+
+        VIOLENT_COMMON("Violenta"),
+        HIGHER_COMMON("Superior"),
+        SHARP_COMMON("Afiada"),
+        FERVENT_COMMON("Fervorosa"),
+        STRONG_COMMON("Forte"),
+        ARMOR_HEAVY_COMMON("Pesada"),
+        UNPLEASANT_COMMON("Desagradável"),
+        ARMOR_SMART_COMMON("Inteligente"),
+        HARMFUL_COMMON("Nociva"),
+        ARMOR_PURE_COMMON("Pura"),
+        ARMOR_CLEAN_COMMON("Limpa"),
+        ARMOR_TITANIC_COMMON("Titânica"),
+        ARMOR_FIERCE_COMMON("Feroz"),
+        ARMOR_LIGHT_COMMON("Leve"),
+        DIVINE_COMMON("Divina"),
+        KIND_COMMON("Gentil"),
+        ARMOR_MYTHICAL_COMMON("Mítica"),
+        DEMONIC_COMMON("Demoníaca"),
+        LEGENDARY_COMMON("Lendária"),
+        EPIC_COMMON("Épica"),
+        STRANGE_COMMON("Estranha"),
+        FAIR_COMMON("Justa"),
+        RICH_COMMON("Rica"),
+        QUICK_COMMON("Rápida"),
+        SPICY_COMMON("Apimentada"),
+        HEROIC_COMMON("Heróica"),
+        BOW_IMPOSING_COMMON("Imponente"),
+        BOW_FAST_COMMON("Rápido"),
+        BOW_ELEGANT_COMMON("Elegante"),
+        BOW_WEIRD_COMMON("Estranho"),
+        BOW_MORTAL_COMMON("Mortal"),
+        BOW_REFINED_COMMON("Refinado"),
+        BOW_RICH_COMMON("Rico"),
+        BOW_RUSHED_COMMON("Apressado"),
+        BOW_UNREAL_COMMON("Irreal");
+
+        private String name;
+
     }
 
     public enum GUIType {

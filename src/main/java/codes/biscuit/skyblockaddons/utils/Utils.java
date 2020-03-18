@@ -452,12 +452,25 @@ public class Utils {
         return false;
     }
 
+    private Set<String> reforgesWarned = new LinkedHashSet<>();
+
     public String getReforgeFromItem(ItemStack item) {
         if (item.hasTagCompound()) {
             NBTTagCompound extraAttributes = item.getTagCompound();
             if (extraAttributes.hasKey("reforge")) {
-                String reforge = extraAttributes.getString("reforge").split("_")[0];
-                return WordUtils.capitalize(reforge);
+                String reforgeTag = extraAttributes.getString("reforge");
+
+                String reforgeName = null;
+                EnumUtils.ReforgeType reforgeType = null;
+                try {
+                    reforgeType = EnumUtils.ReforgeType.valueOf(reforgeTag);
+                    reforgeName = reforgeType.getName();
+                } catch (IllegalArgumentException e) {
+                    reforgeName = reforgeTag;
+                    if (reforgesWarned.add(reforgeTag))
+                        SkyblockAddons.getInstance().getUtils().sendMessage(ChatFormatting.RED + "A reforja \"" + reforgeTag + "\" ainda não possui uma tradução, por favor, entre em contato com Henry_Fabio (Henry Fábio#1347) para isso ser resolvido. OBS: Registre o nome da reforja junto com sua tradução (Nome do item reforjado).", false);
+                }
+                return reforgeType != null ? reforgeName : reforgeTag;
             }
         }
         return null;

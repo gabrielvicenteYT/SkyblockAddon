@@ -11,6 +11,7 @@ import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.ScaledResolution;
@@ -424,7 +425,9 @@ public class RenderListener {
             for (Entity listEntity : mc.theWorld.loadedEntityList) {
                 if (listEntity instanceof EntityArmorStand) {
                     EntityArmorStand stand = (EntityArmorStand) listEntity;
-                    if (stand.getHeldItem() != null && stand.getHeldItem().toString().contains("item.bone") && listEntity.getDistanceToEntity(mc.thePlayer) <= 6)
+                    double distanceX = Math.abs(mc.thePlayer.posX - listEntity.posX);
+                    double distanceZ = Math.abs(mc.thePlayer.posZ - listEntity.posZ);
+                    if (stand.getHeldItem() != null && stand.getHeldItem().toString().contains("item.bone") && distanceX <= 8 && distanceZ <= 8)
                         bones++;
                 }
             }
@@ -432,7 +435,6 @@ public class RenderListener {
             bones = 3;
         }
         if (bones > 3) bones = 3;
-        RenderManagerHook.getNearbyBones().clear();
 
         float height = 16;
         float width = 3 * 15;
