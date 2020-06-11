@@ -116,7 +116,7 @@ enum NPC {
     HAYMITCH("Haymitch", -202.5, 84, -240.5, asList(Tag.PLAYER, Tag.QUEST_NPC), singletonList(Location.SPIDERS_DEN)),
 
     // Blazing Fortress
-    ELLE("Elle", -311.5, 96, -405.5, asList(Tag.PLAYER, Tag.QUEST_NPC), singletonList(Location.BLAZING_FORTRESS)),
+    ELLE("Elle", -311.5, 96, -405.5, asList(Tag.PLAYER, Tag.QUEST_NPC), singletonList(Location.NETHER)),
 
     // The End
     GUBER("Guber", -494.5, 121, -241.5, asList(Tag.PLAYER, Tag.QUEST_NPC), singletonList(Location.THE_END)),

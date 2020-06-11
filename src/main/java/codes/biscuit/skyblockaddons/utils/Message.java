@@ -99,6 +99,7 @@ public enum Message {
     SETTING_HIDE_ALL_PLAYERS(MessageObject.SETTING, "hideAllPlayers"),
     SETTING_ENABLE_COLOR_CONVOLVE(MessageObject.SETTING, "enableColorConvolve"),
     SETTING_DISABLE_USELESS_MESSAGES(MessageObject.SETTING, "disableUselessMessages"),
+    SETTING_DISABLE_GLOBAL_CHAT(MessageObject.SETTING, "disableGlobalChat"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

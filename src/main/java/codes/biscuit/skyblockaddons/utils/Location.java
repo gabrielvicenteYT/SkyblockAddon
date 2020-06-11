@@ -52,7 +52,7 @@ public enum Location {
 
     SPIDERS_DEN("Covil das Aranhas"),
 
-    BLAZING_FORTRESS("Blazing Fortress"),
+    NETHER("Nether"),
 
     // The End
     THE_END("The End"),

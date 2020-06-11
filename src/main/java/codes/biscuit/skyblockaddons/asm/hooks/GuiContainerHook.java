@@ -23,7 +23,10 @@ import net.minecraft.util.ResourceLocation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class GuiContainerHook {
@@ -82,10 +85,10 @@ public class GuiContainerHook {
                         } else {
                             reforge = ChatFormatting.RED + reforge;
                         }
-                        x += 20;
+                        x -= 28;
                         y += 22;
                         float halfStringWidth = MinecraftReflection.FontRenderer.getStringWidth(reforge) / 2F;
-                        reforgeToRender = new EnchantPair(x, y, reforge);
+                        reforgeToRender = new EnchantPair(x - halfStringWidth, y, reforge);
                     }
                 }
             }

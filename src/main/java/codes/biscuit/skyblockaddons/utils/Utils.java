@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.RegexUtil;
 import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
+import com.google.common.base.Joiner;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.ObjectArrays;
@@ -35,7 +36,6 @@ import net.minecraftforge.fml.relauncher.FMLInjectionData;
 import net.minecraftforge.fml.relauncher.FileListHelper;
 import net.minecraftforge.fml.relauncher.ModListHelper;
 import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.text.WordUtils;
 
 import java.awt.*;
 import java.io.*;
@@ -48,7 +48,6 @@ import java.net.URLConnection;
 import java.util.List;
 import java.util.*;
 import java.util.jar.JarFile;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
@@ -459,11 +458,12 @@ public class Utils {
             NBTTagCompound extraAttributes = item.getTagCompound();
             if (extraAttributes.hasKey("reforge")) {
                 String reforgeTag = extraAttributes.getString("reforge");
+                String[] split = reforgeTag.split("_");
 
-                String reforgeName = null;
+                String reforgeName;
                 EnumUtils.ReforgeType reforgeType = null;
                 try {
-                    reforgeType = EnumUtils.ReforgeType.valueOf(reforgeTag);
+                    reforgeType = EnumUtils.ReforgeType.valueOf(Joiner.on("_").join(Arrays.copyOfRange(split, 0, split.length - 1)));
                     reforgeName = reforgeType.getName();
                 } catch (IllegalArgumentException e) {
                     reforgeName = reforgeTag;

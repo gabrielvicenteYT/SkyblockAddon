@@ -14,7 +14,7 @@
     "resetLocations": "Restaurar Posições",
     "hideDurability": "Esconder Durabilidade de Ferramentas",
     "showEnchantmentsReforges": "Encantamentos e Reforjadas",
-    "minionStopWarning": "Aviso de \"Criado Não Alcança\"",
+    "minionStopWarning": "Aviso de \"Minion Não Alcança\"",
     "hidePlayersNearNPCs": "Esconder Jogadores perto de NPCs",
     "backpackStyle": "Estilo de Mochila: %style%",
     "backpackStyles": {
@@ -23,7 +23,7 @@
     },
     "showBackpackPreview": "Mostrar Conteúdo de Mochilas",
     "hideHealthBar": "Esconder Barra de Vida",
-    "fullMinionWarning": "Aviso de Criado Cheio",
+    "fullMinionWarning": "Aviso de Minion Cheio",
     "ignoreItemFrameClicks": "Ignorar Cliques em Molduras",
     "showOnlyWhenHoldingShift": "Mostrar Apenas com Shift Pressionado",
     "manaBar": "Barra de Mana",
@@ -100,15 +100,16 @@
     "fenceLocationMinionWarning": "Desativar aviso de cerque o local",
     "hideAllPlayers": "Esconder jogadores",
     "enableColorConvolve": "Ativar Cores Vivas (Color Convolve)",
-    "disableUselessMessages": "Desativar mensagens inúteis"
+    "disableUselessMessages": "Desativar mensagens inúteis",
+    "disableGlobalChat": "Desabilitar Chat Global"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
     "magmaBossWarning": "Cubo de Magma Chefão!",
     "fullInventory": "Inventário Cheio!",
     "labymod": "Usuários de Labymod: Esconder Barras de Fome, Armadura e Vida não é compatível.",
-    "minionCannotReach": "Um criado não alcança entidades e parou de trabalhar!",
-    "minionIsFull": "Um criado em sua ilha está cheio!",
+    "minionCannotReach": "Um minion não alcança entidades e parou de trabalhar!",
+    "minionIsFull": "Um minion em sua ilha está cheio!",
     "typeEnchantmentsHere": "Escreva %type% Aqui!",
     "separateMultiple": "Separe Múltiplos Com Vírgulas.",
     "enchantsToMatch": "%type% Para Procurar:",

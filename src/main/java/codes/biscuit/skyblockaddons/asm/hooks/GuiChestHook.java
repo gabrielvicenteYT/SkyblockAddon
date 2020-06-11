@@ -19,7 +19,6 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Keyboard;
 
-import java.awt.*;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;

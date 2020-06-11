@@ -46,8 +46,10 @@ public class RenderManagerHook {
             }
 
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS)) {
-                if ((entityIn instanceof EntityOtherPlayerMP) &&
-                        entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7) {
+                if ((entityIn instanceof EntityOtherPlayerMP)) {
+                    if (main.getUtils().getLocation() != Location.NETHER) {
+                        if (entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) <= 7) return;
+                    }
                     returnValue.cancel();
                 }
             } else if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_IN_LOBBY)) {

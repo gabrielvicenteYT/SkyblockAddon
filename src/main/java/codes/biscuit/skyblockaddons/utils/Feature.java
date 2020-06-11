@@ -93,6 +93,7 @@ public enum Feature {
     HIDE_PLAYERS(73, Message.SETTING_HIDE_ALL_PLAYERS, true),
     ENABLE_COLOR_CONVOLVE(74, Message.SETTING_ENABLE_COLOR_CONVOLVE, true),
     DISABLE_USELESS_MESSAGES(75, Message.SETTING_DISABLE_USELESS_MESSAGES, true),
+    DISABLE_GLOBAL_CHAT(76, Message.SETTING_DISABLE_GLOBAL_CHAT, false),
 
     HIDE_GREY_ENCHANTS(100, null, false), // This is here just to allow remote disabling this feature- it's caused issues in the past haha.
 

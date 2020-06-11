@@ -56,7 +56,7 @@ public class PlayerListener {
     private final Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
     private final Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
     private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+(?:§[0-9a-f])?([0-9.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
-    private final Set<String> randomMessages = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?", "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your Magical Mushroom Soup flight has been extended for 2 extra minutes."));
+    private final Set<String> randomMessages = new HashSet<>(Arrays.asList("Agora você pode voar por 2 minutos.", "A Sopa Mágica perderá o efeito em 60 segundos.", "A Sopa Mágica perderá o efeito em 30 segundos.", "A Sopa Mágica perderá o efeito em 10 segundos.", "A Sopa Mágica perderá o efeito em 9 segundos.", "A Sopa Mágica perderá o efeito em 8 segundos.", "A Sopa Mágica perderá o efeito em 7 segundos.", "A Sopa Mágica perderá o efeito em 6 segundos.", "A Sopa Mágica perderá o efeito em 5 segundos.", "A Sopa Mágica perderá o efeito em 4 segundos.", "A Sopa Mágica perderá o efeito em 3 segundos.", "A Sopa Mágica perderá o efeito em 2 segundos.", "A Sopa Mágica perderá o efeito em 1 segundo.", "O efeito da Sopa Mágica terminou. :("));
     private final Set<String> uselessMessages = Sets.newHashSet("Dano cancelado!", "Você entrou em combate.", "Ops! Vai com calma.", "Você morreu!");
     private final SkyblockAddons main;
     private final ActionBarParser actionBarParser;
@@ -148,7 +148,7 @@ public class PlayerListener {
             /*  Resets all user input on dead as to not walk backwards or stafe into the portal
                 Might get trigger upon encountering a non named "You" though this chance is so
                 minimal it can be discarded as a bug. */
-            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && formattedText.contains("Você morreu.")) {
+            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && formattedText.contains("Você morreu!")) {
                 KeyBinding.unPressAllKeys();
             }
             // credits to tomotomo, thanks lol
@@ -168,6 +168,10 @@ public class PlayerListener {
                     e.message = new ChatComponentText(e.message.getFormattedText() + ChatFormatting.GRAY + " (" + main.getPersistentValues().getKills() + ")");
                     main.getPersistentValues().setKills(-1); // This is triggered before the death of the killed zealot, so this is set to -1 to account for that.
                 }
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.DISABLE_GLOBAL_CHAT) && message.contains("[g] ")) {
+                e.setCanceled(true);
             }
 
             if (main.getConfigValues().isEnabled(Feature.DISABLE_MAGICAL_SOUP_MESSAGES) && randomMessages.contains(message)) {
@@ -337,7 +341,8 @@ public class PlayerListener {
             boolean changing = false;
             while (!entityRenderer.isShaderActive() || !entityRenderer.getShaderGroup().getShaderGroupName().equals("minecraft:shaders/post/color_convolve.json")) {
                 if (!changing) {
-                    if (instance.isDevMode()) instance.getUtils().sendMessage(ChatFormatting.YELLOW + "Changing to 'color_convolve.json' shader.");
+                    if (instance.isDevMode())
+                        instance.getUtils().sendMessage(ChatFormatting.YELLOW + "Changing to 'color_convolve.json' shader.");
                     changing = true;
                 }
                 entityRenderer.activateNextShader();
@@ -490,7 +495,7 @@ public class PlayerListener {
         // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
         AxisAlignedBB spawnArea = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
 
-        if (main.getUtils().getLocation() == Location.BLAZING_FORTRESS) {
+        if (main.getUtils().getLocation() == Location.NETHER) {
             Entity entity = e.entity;
             if (spawnArea.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
                 long currentTime = System.currentTimeMillis();
@@ -541,7 +546,7 @@ public class PlayerListener {
                     Container chest = ((GuiChest) gui).inventorySlots;
                     if (chest instanceof ContainerChest) {
                         IInventory inventory = ((ContainerChest) chest).getLowerChestInventory();
-                        if (inventory.hasCustomName() && "Enchant Item".equals(inventory.getDisplayName().getUnformattedText())) {
+                        if (inventory.hasCustomName() && "Mesa de Encantamento".equals(inventory.getDisplayName().getUnformattedText())) {
                             continue; // dont replace enchants when you are enchanting items in an enchantment table
                         }
                     }

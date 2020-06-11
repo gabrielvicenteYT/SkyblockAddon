@@ -43,7 +43,6 @@ public class Backpack {
         SkyblockAddons main = SkyblockAddons.getInstance();
         String id = ItemUtils.getSkyBlockItemID(stack);
         if (id != null) {
-            System.out.println("BACKPACK TAG: " + stack.getTagCompound());
             NBTTagCompound extraAttributes = stack.getTagCompound().getCompoundTag("ExtraAttributes");
             Matcher matcher = BACKPACK_ID_PATTERN.matcher(id);
             boolean matches = matcher.matches();

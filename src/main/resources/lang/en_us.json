@@ -99,7 +99,8 @@
     "fenceLocationMinionWarning": "Disable fence location warn",
     "hideAllPlayers": "Hide Players",
     "enableColorConvolve": "Enable Color Convolve",
-    "disableUselessMessages": "Disable Useless Messages"
+    "disableUselessMessages": "Disable Useless Messages",
+    "disableGlobalChat": "Disable Global Chat"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
