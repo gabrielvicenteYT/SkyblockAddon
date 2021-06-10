@@ -279,7 +279,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         int defaultBlue = SkyblockAddons.getInstance().getUtils().getDefaultBlue(alpha);
 
         drawScaledString(gui, "SkyblockAddons", 28, defaultBlue, 2.5F, 0);
-        drawScaledString(gui, "v" + SkyblockAddons.VERSION + " por Biscut e editado por Henry_Fabio", 49, defaultBlue, 1.3, 0);
+        drawScaledString(gui, SkyblockAddons.VERSION + "por Sovacos", 49, defaultBlue, 1.3, 0);
     }
 
     /**
