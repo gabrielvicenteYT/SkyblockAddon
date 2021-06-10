@@ -3,10 +3,10 @@ package codes.sovacos.skyblockaddons.constants.game;
 import lombok.Getter;
 
 /**
- * Skyblock item rarity definitions
+ * Definir a raridade de itens
  */
 @Getter
-public enum Rarity {
+public enum Raridade {
     COMUM("COMUM"),
     INCOMUM("INCOMUM"),
     RARA("RARA"),
@@ -17,7 +17,7 @@ public enum Rarity {
 
     private String tag;
 
-    Rarity(String s) {
+    Raridade(String s) {
         this.tag = s;
     }
 }
