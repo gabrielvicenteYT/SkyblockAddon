@@ -16,9 +16,9 @@ public class SkyblockAddonsCommand extends CommandBase {
 
     private static String[] HELP_MESSAGE = {
             Utils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"),
-            Utils.color("&b● /sba &7- Open the main menu"),
-            Utils.color("&b● /sba edit &7- Edit GUI locations"),
-            Utils.color("&b● /sba folder &7- Open your mods folder"),
+            Utils.color("&b● /sba &7- Abrir o menu"),
+            Utils.color("&b● /sba editar &7- Editar o GUI"),
+            Utils.color("&b● /sba folder &7- Abrir a pasta dos mods"),
             Utils.color("&7&m----------------------------------------------")};
 
     private SkyblockAddons main;
